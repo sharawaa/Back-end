@@ -1,4 +1,5 @@
- [
+{
+  "product": [
     {
       "id": "12345",
       "name": "Cарангэрэл",
@@ -9,39 +10,176 @@
       "email": "sra11schi@example.com"
     },
     {
-        "id": "12345",
-        "name": "Cарангэрэл",
-        "phone": "#15358",
-        "date": "2022/02/02",
-        "order": "3",
-        "sureName": "Батравдан",
-        "email": "sra11schi@example.com"
-      },
-      {
-        "id": "12345",
-        "name": "Cарангэрэл",
-        "phone": "#15358",
-        "date": "2022/02/02",
-        "order": "3",
-        "sureName": "Батравдан",
-        "email": "sra11schi@example.com"
-      },
-      {
-        "id": "12345",
-        "name": "Cарангэрэл",
-        "phone": "#15358",
-        "date": "2022/02/02",
-        "order": "3",
-        "sureName": "Батравдан",
-        "email": "sra11schi@example.com"
-      },
-      {
-        "id": "12345",
-        "name": "Cарангэрэл",
-        "phone": "#15358",
-        "date": "2022/02/02",
-        "order": "3",
-        "sureName": "Батравдан",
-        "email": "sra11schi@example.com"
-      }
-]
+      "id": "12345",
+      "name": "Cарангэрэл",
+      "phone": "#15358",
+      "date": "2022/02/02",
+      "order": "3",
+      "sureName": "Батравдан",
+      "email": "sra11schi@example.com"
+    },
+    {
+      "id": "12345",
+      "name": "Cарангэрэл",
+      "phone": "#15358",
+      "date": "2022/02/02",
+      "order": "3",
+      "sureName": "Батравдан",
+      "email": "sra11schi@example.com"
+    },
+    {
+      "id": "12345",
+      "name": "Cарангэрэл",
+      "phone": "#15358",
+      "date": "2022/02/02",
+      "order": "3",
+      "sureName": "Батравдан",
+      "email": "sra11schi@example.com"
+    },
+    {
+      "id": "12345",
+      "name": "Cарангэрэл",
+      "phone": "#15358",
+      "date": "2022/02/02",
+      "order": "3",
+      "sureName": "Батравдан",
+      "email": "sra11schi@example.com"
+    }
+  ],
+
+  "order": [
+    {
+      "no": "#15458",
+      "date": "2022.12.02",
+      "phone": "80395252",
+      "eMail": "sra11schi...",
+      "address": "ХУД 4-р х...",
+      "number": "2",
+      "totalAmount": "1,477,500",
+      "payment": "Картаар",
+      "status": "Идэвхитэй"
+    },
+    {
+      "no": "#15358",
+      "date": "2022.12.02",
+      "phone": "80395252",
+      "eMail": "sra11schi...",
+      "address": "ХУД 4-р х...",
+      "number": "2",
+      "totalAmount": "1,477,500",
+      "payment": "Картаар",
+      "status": "Идэвхитэй"
+    },
+    {
+      "no": "#15258",
+      "date": "2022.12.02",
+      "phone": "80395252",
+      "eMail": "sra11schi...",
+      "address": "ХУД 4-р х...",
+      "number": "2",
+      "totalAmount": "1,477,500",
+      "payment": "Картаар",
+      "status": "Идэвхитэй"
+    },
+    {
+      "no": "#15158",
+      "date": "2022.12.02",
+      "phone": "80395252",
+      "eMail": "sra11schi...",
+      "address": "ХУД 4-р х...",
+      "number": "2",
+      "totalAmount": "1,477,500",
+      "payment": "Картаар",
+      "status": "Идэвхитэй"
+    },
+    {
+      "no": "#15658",
+      "date": "2022.12.02",
+      "phone": "80395252",
+      "eMail": "sra11schi...",
+      "address": "ХУД 4-р х...",
+      "number": "2",
+      "totalAmount": "1,477,500",
+      "payment": "Картаар",
+      "status": "Идэвхитэй"
+    },
+    {
+      "no": "#15758",
+      "date": "2022.12.02",
+      "phone": "80395252",
+      "eMail": "sra11schi...",
+      "address": "ХУД 4-р х...",
+      "number": "2",
+      "totalAmount": "1,477,500",
+      "payment": "Картаар",
+      "status": "Идэвхитэй"
+    },
+    {
+      "no": "#15858",
+      "date": "2022.12.02",
+      "phone": "80395252",
+      "eMail": "sra11schi...",
+      "address": "ХУД 4-р х...",
+      "number": "2",
+      "totalAmount": "1,477,500",
+      "payment": "Картаар",
+      "status": "Идэвхитэй"
+    }
+  ],
+  "moderat": [
+    {
+      "moderator": "#1234",
+      "sureName": "Батравдан",
+      "name": "Cарангэрэл",
+      "eMail": "sra11schi@example.com",
+      "phone": "80795262",
+      "goodsSold": "2",
+      "date": "2022/02/02"
+    },
+    {
+      "moderator": "#1235",
+      "sureName": "Батравдан",
+      "name": "Cарангэрэл",
+      "eMail": "sra11schi@example.com",
+      "phone": "80795262",
+      "goodsSold": "2",
+      "date": "2022/02/02"
+    },
+    {
+      "moderator": "#1236",
+      "sureName": "Батравдан",
+      "name": "Cарангэрэл",
+      "eMail": "sra11schi@example.com",
+      "phone": "80795262",
+      "goodsSold": "2",
+      "date": "2022/02/02"
+    },
+    {
+      "moderator": "#1237",
+      "sureName": "Батравдан",
+      "name": "Cарангэрэл",
+      "eMail": "sra11schi@example.com",
+      "phone": "80795262",
+      "goodsSold": "2",
+      "date": "2022/02/02"
+    },
+    {
+      "moderator": "#1238",
+      "sureName": "Батравдан",
+      "name": "Cарангэрэл",
+      "eMail": "sra11schi@example.com",
+      "phone": "80795262",
+      "goodsSold": "2",
+      "date": "2022/02/02"
+    },
+    {
+      "moderator": "#1239",
+      "sureName": "Батравдан",
+      "name": "Cарангэрэл",
+      "eMail": "sra11schi@example.com",
+      "phone": "80795262",
+      "goodsSold": "2",
+      "date": "2022/02/02"
+    }
+  ]
+}
