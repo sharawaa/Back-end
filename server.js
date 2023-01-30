@@ -8,6 +8,13 @@ const { request, response } = require("express");
 app.use(cors());
 app.use(express.json());
 
+app.delete("/products/:id", (request, response) => {
+  console.log(request.params.id);
+  data.products = data.products.filter(
+    (product) => product.id !== request.params.id
+  );
+});
+
 app.post("/products", (request, response) => {
   data.products.push(request.body);
 });
@@ -30,4 +37,3 @@ app.get("/users", (request, response) => {
 app.listen(port, () => {
   console.log(`server is starting in ${port}`);
 });
-
