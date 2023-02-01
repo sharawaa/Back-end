@@ -36,28 +36,29 @@ app.delete("/products/:id", (request, response) => {
   console.log(request.params.id);
 });
 
-app.put("/products/:id",(request, response)=>{
-  fs.readFile("./data/products.json",(error,data)=>{
-    if(error){
-      response.status(500).send({ messege:"ene munuu", error });
-    }else{
-      
+app.put("/products/:id", (request, response) => {
+  fs.readFile("./data/products.json", (error, data) => {
+    if (error) {
+      response.status(500).send({ messege: error });
+    } else {
       let products = JSON.parse(data);
-     let findData = products.find((product)=>product.id === request.params.id );
-     products[products.IndexOf(findData)]=request.body;
-     fs.writeFile("./data/products.json", JSON.stringify(products), (err) => {
-      if (err) {
-        response.status(500).send[{ messege: err }];
-      } else {
-        response.status(200).send[
-          { messege: "product added successfuly added" }
-        ];
-      }
-    });
+      let findData = products.find(
+        (product) => product.id === request.params.id
+      );
+      products[products.indexOf(findData)] = request.body;
 
+      fs.writeFile("./data/products.json", JSON.stringify(products), (err) => {
+        if (err) {
+          response.status(500).send[{ messege: err }];
+        } else {
+          response.status(200).send[
+            { messege: "product added successfuly added" }
+          ];
+        }
+      });
     }
-  })
-})
+  });
+});
 
 // app.put("/products/:id", (request, response) => {
 //   console.log(request.params.id);
