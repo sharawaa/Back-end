@@ -95,8 +95,6 @@ app.post("/products", (request, response) => {
   });
 });
 
-
-
 app.get("/orders", (request, response) => {
   response.status(201).json(orders);
 });
@@ -106,29 +104,25 @@ app.get("/moderators", (request, response) => {
   response.status(202).json(moderats);
 });
 /*moderats post*/
-app.post("/moderats",(request, response)=>{
-  fs.readFile("./data/moderats.json",(data, error)=>{
-    if(error){
+app.post("/moderats", (request, response) => {
+  fs.readFile("./data/moderats.json", (data, error) => {
+    if (error) {
       response.status(500).send({ messege: error });
-    }else{
+    } else {
       let moderat = JSON.parse(data);
       moderat.push(request.body);
-      fs.writeFile(".data/moderats.json",JSON.stringify(moderat),(err)=>{
-        if(error){
+      fs.writeFile(".data/moderats.json", JSON.stringify(moderat), (err) => {
+        if (error) {
           response.status(500).send[{ messege: err }];
-        }else{
+        } else {
           response.status(200).send[
-            { messege: "product added successfuly added" }]
+            { messege: "product added successfuly added" }
+          ];
         }
-      })
+      });
     }
-  })
-} )
-
-
-
-
-
+  });
+});
 
 app.get("/users", (request, response) => {
   response.status(203).json(users);
@@ -137,3 +131,4 @@ app.get("/users", (request, response) => {
 app.listen(port, () => {
   console.log(`server is starting in ${port}`);
 });
+console.log("snn sda");
