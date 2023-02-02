@@ -11,10 +11,16 @@ const moderats = require("./data/moderats.json");
 const users = require("./data/users.json");
 const orders = require("./data/orders.json");
 const { request, response } = require("express");
+const { error } = require("console");
 
 app.use(cors());
 app.use(express.json());
-
+/*product get*/
+app.get("/products", (request, response) => {
+  console.log("start");
+  response.status(200).json(products);
+});
+/*product delete*/
 app.delete("/products/:id", (request, response) => {
   fs.readFile("./data/products.json", (error, data) => {
     if (error) {
@@ -35,7 +41,7 @@ app.delete("/products/:id", (request, response) => {
   });
   console.log(request.params.id);
 });
-
+/*product put*/
 app.put("/products/:id", (request, response) => {
   fs.readFile("./data/products.json", (error, data) => {
     if (error) {
@@ -68,7 +74,7 @@ app.put("/products/:id", (request, response) => {
 //     }
 //   });
 // });
-
+/*product post*/
 app.post("/products", (request, response) => {
   fs.readFile("./data/products.json", (error, data) => {
     if (error) {
@@ -89,17 +95,40 @@ app.post("/products", (request, response) => {
   });
 });
 
-app.get("/products", (request, response) => {
-  console.log("start");
-  response.status(200).json(products);
-});
+
 
 app.get("/orders", (request, response) => {
   response.status(201).json(orders);
 });
+
+/*moderats get*/
 app.get("/moderators", (request, response) => {
   response.status(202).json(moderats);
 });
+/*moderats post*/
+app.post("/moderats",(request, response)=>{
+  fs.readFile("./data/moderats.json",(data, error)=>{
+    if(error){
+      response.status(500).send({ messege: error });
+    }else{
+      let moderat = JSON.parse(data);
+      moderat.push(request.body);
+      fs.writeFile(".data/moderats.json",JSON.stringify(moderat),(err)=>{
+        if(error){
+          response.status(500).send[{ messege: err }];
+        }else{
+          response.status(200).send[
+            { messege: "product added successfuly added" }]
+        }
+      })
+    }
+  })
+} )
+
+
+
+
+
 
 app.get("/users", (request, response) => {
   response.status(203).json(users);
