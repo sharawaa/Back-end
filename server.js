@@ -106,12 +106,14 @@ app.get("/moderators", (request, response) => {
 /*moderats post*/
 app.post("/moderats", (request, response) => {
   fs.readFile("./data/moderats.json", (data, error) => {
+    console.log(JSON.parse(data));
     if (error) {
       response.status(500).send({ messege: error });
     } else {
       let moderat = JSON.parse(data);
       moderat.push(request.body);
-      fs.writeFile(".data/moderats.json", JSON.stringify(moderat), (err) => {
+
+      fs.writeFile("./data/moderats.json", JSON.stringify(moderat), (err) => {
         if (error) {
           response.status(500).send[{ messege: err }];
         } else {
@@ -131,4 +133,3 @@ app.get("/users", (request, response) => {
 app.listen(port, () => {
   console.log(`server is starting in ${port}`);
 });
-
