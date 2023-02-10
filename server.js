@@ -10,7 +10,7 @@ const products = require("./data/products.json");
 const moderats = require("./data/moderats.json");
 const users = require("./data/users.json");
 const orders = require("./data/orders.json");
-const { request, response } = require("express");
+const { request, response, query } = require("express");
 const { error } = require("console");
 
 app.use(cors());
@@ -29,11 +29,12 @@ app.delete("/products/:id", (request, response) => {
       let product = JSON.parse(data);
       product = product.filter((product) => product.id !== request.params.id);
       fs.writeFile("./data/products.json", JSON.stringify(product), (err) => {
+        //console.log("garjiinu",product.id)
         if (err) {
           response.status(500).send[{ messege: err }];
         } else {
           response.status(200).send[
-            { messege: "product added successfuly added" }
+            { messege: "product delete successfuly " }
           ];
         }
       });
@@ -66,14 +67,7 @@ app.put("/products/:id", (request, response) => {
   });
 });
 
-// app.put("/products/:id", (request, response) => {
-//   console.log(request.params.id);
-//   products = products.filter((product) => {
-//     if(product.id === request.params.id) {
-//       response.
-//     }
-//   });
-// });
+
 /*product post*/
 app.post("/products", (request, response) => {
   fs.readFile("./data/products.json", (error, data) => {
@@ -104,27 +98,50 @@ app.get("/moderators", (request, response) => {
   response.status(202).json(moderats);
 });
 /*moderats post*/
-app.post("/moderats", (request, response) => {
-  fs.readFile("./data/moderats.json", (data, error) => {
+app.post("/moderators", (request, response) => {
+  fs.readFile("./data/moderats.json", (error ,data) => {
     console.log(JSON.parse(data));
     if (error) {
       response.status(500).send({ messege: error });
     } else {
       let moderat = JSON.parse(data);
-      moderat.push(request.body);
+      moderat.push({ ...request.body, id: uuidv4() });
 
       fs.writeFile("./data/moderats.json", JSON.stringify(moderat), (err) => {
-        if (error) {
+        if (err) {
           response.status(500).send[{ messege: err }];
         } else {
-          response.status(200).send[
-            { messege: "product added successfuly added" }
+          response.status(202).send[
+            { messege: "moderat added successfuly added" }
           ];
         }
       });
     }
   });
 });
+/*moderat delete  */
+
+app.delete("/moderators/:id",(request, response)=>{
+  fs.readFile("./data/moderats.json",( error , data)=>{
+    if(error){
+      response.status(500).send({messege:error})
+    }else{
+      let product = JSON.parse(data)
+      product = product.filter((products)=>products.id !== request.params.id);
+      //console.log(products.id)
+      
+      fs.writeFile(".data/moderats.json", JSON.stringify(product), (err)=>{
+        if(err){
+          response.status(500).send[{ messege: err }];
+        }else{
+          response.status(202).send[
+            { messege: "moderator successfuly delete" }
+          ];
+        }
+      })
+    }
+  })
+})
 
 app.get("/users", (request, response) => {
   response.status(203).json(users);
