@@ -12,6 +12,7 @@ const users = require("./data/users.json");
 const orders = require("./data/orders.json");
 const { request, response, query } = require("express");
 const { error } = require("console");
+const { parse } = require("path");
 
 app.use(cors());
 app.use(express.json());
@@ -81,13 +82,14 @@ app.post("/products", (request, response) => {
           response.status(500).send[{ messege: err }];
         } else {
           response.status(200).send[
-            { messege: "product added successfuly added" }
+            { messege: "product successfuly added" }
           ];
         }
       });
     }
   });
 });
+
 
 app.get("/orders", (request, response) => {
   response.status(201).json(orders);
@@ -142,10 +144,30 @@ app.delete("/moderators/:id",(request, response)=>{
     }
   })
 })
-
+/*users get*/
 app.get("/users", (request, response) => {
   response.status(203).json(users);
 });
+/*users post */
+app.post("/users", (request, response)=>{
+  fs.readFile("./data/users.json", (error, data)=>{
+    if(error){
+      response.status(500).send({ messege: error });
+    }else{
+      let user = JSON.parse(data);
+      user.push({...request.body, id: uuidv4()});
+      fs.writeFile("./data/users.json", JSON.stringify(user), (err)=>{
+        if(err){
+          response.status(500).send[{messege: err}]
+        }else{
+          response.status(203).send[
+            {messege: "user  successfuly added"}
+          ]
+        }
+      })
+    }
+  })
+})
 
 app.listen(port, () => {
   console.log(`server is starting in ${port}`);
