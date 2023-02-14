@@ -95,6 +95,28 @@ app.get("/orders", (request, response) => {
   response.status(201).json(orders);
 });
 
+
+app.post("/orders", (request, response)=>{
+  fs.readFile("./data/orders.json",(error, data)=>{
+    console.log(JSON.parse(data));
+    if(error){
+      response.status(500).send({messege:error});
+    }else{
+      let order= JSON.parse(data);
+      order.push(request.body);
+
+      fs.writeFile("./data/orders.json",JSON.stringify(order), (err)=>{
+        if(err){
+          response.status(500).send[{messege:err}]
+        }else{
+          response.status(201).send[
+            { messege: "order added successfuly " }
+          ]
+        }
+      })
+    }
+  })
+})
 /*moderats get*/
 app.get("/moderators", (request, response) => {
   response.status(202).json(moderats);
@@ -114,7 +136,7 @@ app.post("/moderators", (request, response) => {
           response.status(500).send[{ messege: err }];
         } else {
           response.status(202).send[
-            { messege: "moderat added successfuly added" }
+            { messege: "moderat added successfuly" }
           ];
         }
       });
