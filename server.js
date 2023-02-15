@@ -10,7 +10,7 @@ const products = require("./data/products.json");
 const moderats = require("./data/moderats.json");
 const users = require("./data/users.json");
 const orders = require("./data/orders.json");
-const { request, response, query } = require("express");
+//const { request, response, query } = require("express");
 const { error } = require("console");
 const { parse } = require("path");
 
