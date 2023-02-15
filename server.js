@@ -34,9 +34,7 @@ app.delete("/products/:id", (request, response) => {
         if (err) {
           response.status(500).send[{ messege: err }];
         } else {
-          response.status(200).send[
-            { messege: "product delete successfuly " }
-          ];
+          response.status(200).send[{ messege: "product delete successfuly " }];
         }
       });
     }
@@ -68,7 +66,6 @@ app.put("/products/:id", (request, response) => {
   });
 });
 
-
 /*product post*/
 app.post("/products", (request, response) => {
   fs.readFile("./data/products.json", (error, data) => {
@@ -81,49 +78,43 @@ app.post("/products", (request, response) => {
         if (err) {
           response.status(500).send[{ messege: err }];
         } else {
-          response.status(200).send[
-            { messege: "product successfuly added" }
-          ];
+          response.status(200).send[{ messege: "product successfuly added" }];
         }
       });
     }
   });
 });
 
-
 app.get("/orders", (request, response) => {
-  response.status(201).json(orders);
+  response.status(200).json(orders);
 });
 
-
-app.post("/orders", (request, response)=>{
-  fs.readFile("./data/orders.json",(error, data)=>{
+app.post("/orders", (request, response) => {
+  fs.readFile("./data/orders.json", (error, data) => {
     console.log(JSON.parse(data));
-    if(error){
-      response.status(500).send({messege:error});
-    }else{
-      let order= JSON.parse(data);
+    if (error) {
+      response.status(500).send({ messege: error });
+    } else {
+      let order = JSON.parse(data);
       order.push(request.body);
 
-      fs.writeFile("./data/orders.json",JSON.stringify(order), (err)=>{
-        if(err){
-          response.status(500).send[{messege:err}]
-        }else{
-          response.status(201).send[
-            { messege: "order added successfuly " }
-          ]
+      fs.writeFile("./data/orders.json", JSON.stringify(order), (err) => {
+        if (err) {
+          response.status(500).send[{ messege: err }];
+        } else {
+          response.status(200).send[{ messege: "order added successfuly " }];
         }
-      })
+      });
     }
-  })
-})
+  });
+});
 /*moderats get*/
 app.get("/moderators", (request, response) => {
   response.status(202).json(moderats);
 });
 /*moderats post*/
 app.post("/moderators", (request, response) => {
-  fs.readFile("./data/moderats.json", (error ,data) => {
+  fs.readFile("./data/moderats.json", (error, data) => {
     console.log(JSON.parse(data));
     if (error) {
       response.status(500).send({ messege: error });
@@ -135,9 +126,7 @@ app.post("/moderators", (request, response) => {
         if (err) {
           response.status(500).send[{ messege: err }];
         } else {
-          response.status(202).send[
-            { messege: "moderat added successfuly" }
-          ];
+          response.status(202).send[{ messege: "moderat added successfuly" }];
         }
       });
     }
@@ -145,51 +134,49 @@ app.post("/moderators", (request, response) => {
 });
 /*moderat delete  */
 
-app.delete("/moderators/:id",(request, response)=>{
-  fs.readFile("./data/moderats.json",( error , data)=>{
-    if(error){
-      response.status(500).send({messege:error})
-    }else{
-      let product = JSON.parse(data)
-      product = product.filter((products)=>products.id !== request.params.id);
+app.delete("/moderators/:id", (request, response) => {
+  fs.readFile("./data/moderats.json", (error, data) => {
+    if (error) {
+      response.status(500).send({ messege: error });
+    } else {
+      let product = JSON.parse(data);
+      product = product.filter((products) => products.id !== request.params.id);
       //console.log(products.id)
-      
-      fs.writeFile(".data/moderats.json", JSON.stringify(product), (err)=>{
-        if(err){
+
+      fs.writeFile(".data/moderats.json", JSON.stringify(product), (err) => {
+        if (err) {
           response.status(500).send[{ messege: err }];
-        }else{
+        } else {
           response.status(202).send[
             { messege: "moderator successfuly delete" }
           ];
         }
-      })
+      });
     }
-  })
-})
+  });
+});
 /*users get*/
 app.get("/users", (request, response) => {
   response.status(203).json(users);
 });
 /*users post */
-app.post("/users", (request, response)=>{
-  fs.readFile("./data/users.json", (error, data)=>{
-    if(error){
+app.post("/users", (request, response) => {
+  fs.readFile("./data/users.json", (error, data) => {
+    if (error) {
       response.status(500).send({ messege: error });
-    }else{
+    } else {
       let user = JSON.parse(data);
-      user.push({...request.body, id: uuidv4()});
-      fs.writeFile("./data/users.json", JSON.stringify(user), (err)=>{
-        if(err){
-          response.status(500).send[{messege: err}]
-        }else{
-          response.status(203).send[
-            {messege: "user  successfuly added"}
-          ]
+      user.push({ ...request.body, id: uuidv4() });
+      fs.writeFile("./data/users.json", JSON.stringify(user), (err) => {
+        if (err) {
+          response.status(500).send[{ messege: err }];
+        } else {
+          response.status(203).send[{ messege: "user  successfuly added" }];
         }
-      })
+      });
     }
-  })
-})
+  });
+});
 
 app.listen(port, () => {
   console.log(`server is starting in ${port}`);
