@@ -178,6 +178,32 @@ app.post("/users", (request, response) => {
   });
 });
 
+app.post("/loginHandler", (request, response) => {
+  fs.readFile("./data/users.json", (error, data) => {
+    if (error) {
+      response.status(500).send({ messege: error });
+    } else {
+      let users = JSON.parse(data);
+      let logIn = request.body;
+      let user = users.find((user) => {
+        return (
+          (logIn.userName === user.userName ||
+            logIn.userName === user.phone ||
+            logIn.userName === user.email) &&
+          logIn.userPassword === user.password &&
+          user.role === "user"
+        );
+      });
+      console.log(user);
+      if (user) {
+        response.status(200).json(user);
+      } else {
+        response.status(403).send({ messege: error });
+      }
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`server is starting in ${port}`);
 });
